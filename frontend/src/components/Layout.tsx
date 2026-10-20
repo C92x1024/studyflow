@@ -13,7 +13,7 @@ export default function Layout() {
   return (
     <div className="layout">
       <aside className="sidebar">
-        <div className="sidebar-brand">📚 Student Planner</div>
+        <div className="sidebar-brand">📚 StudyFlow</div>
         <nav>
           <NavLink to="/dashboard">Dashboard</NavLink>
           <NavLink to="/courses">Courses</NavLink>
