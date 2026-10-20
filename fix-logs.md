@@ -1,6 +1,6 @@
-nfig# Fix Logs — Student Planner Railway Deployment
+nfig# Fix Logs — StudyFlow Railway Deployment
 
-A record of every issue encountered and fixed while deploying the student-planner app to Railway.
+A record of every issue encountered and fixed while deploying the studyflow app to Railway.
 
 ---
 
@@ -72,7 +72,7 @@ cors.allowed-origins=${CORS_ALLOWED_ORIGINS:http://localhost:5173}
 
 Then set in Railway backend service Variables:
 ```
-CORS_ALLOWED_ORIGINS = https://student-planner-frontend-production.up.railway.app
+CORS_ALLOWED_ORIGINS = https://studyflow-frontend-production.up.railway.app
 ```
 
 **File changed:** `backend/src/main/resources/application.properties`
@@ -92,7 +92,7 @@ The browser sends a CORS `OPTIONS` preflight request before every cross-origin P
 **Fix:**
 Added an explicit `permitAll()` rule for all `OPTIONS` requests as the first rule in the security filter chain.
 
-`backend/src/main/java/com/studentplanner/config/SecurityConfig.java`:
+`backend/src/main/java/com/studyflow/config/SecurityConfig.java`:
 ```java
 .authorizeHttpRequests(auth -> auth
     .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
@@ -101,7 +101,7 @@ Added an explicit `permitAll()` rule for all `OPTIONS` requests as the first rul
 )
 ```
 
-**File changed:** `backend/src/main/java/com/studentplanner/config/SecurityConfig.java`
+**File changed:** `backend/src/main/java/com/studyflow/config/SecurityConfig.java`
 
 ---
 
@@ -130,7 +130,7 @@ ENTRYPOINT ["java", "-Dserver.port=${PORT:-8080}", "-jar", "app.jar"]
 ## Fix 6 — `VITE_API_URL` not baked into the frontend bundle
 
 **Symptom:**
-All API calls going to `https://student-planner-frontend-production.up.railway.app/api/auth/register` (the frontend itself) instead of the backend URL. Confirmed via DevTools → Network tab.
+All API calls going to `https://studyflow-frontend-production.up.railway.app/api/auth/register` (the frontend itself) instead of the backend URL. Confirmed via DevTools → Network tab.
 
 **Cause:**
 `VITE_*` environment variables are baked into the JavaScript bundle at build time by Vite. Railway's service Variables are runtime environment variables — they are not automatically passed into the Docker build step. So `VITE_API_URL` was always empty when `npm run build` ran, causing `import.meta.env.VITE_API_URL` to resolve to `undefined` and all API calls to fall back to relative paths.
@@ -147,7 +147,7 @@ RUN npm run build
 
 Then set in Railway frontend service **Build Arguments**:
 ```
-VITE_API_URL = https://student-planner-backend-production.up.railway.app
+VITE_API_URL = https://studyflow-backend-production.up.railway.app
 ```
 
 **Files changed:** `frontend/Dockerfile`
@@ -159,8 +159,8 @@ VITE_API_URL = https://student-planner-backend-production.up.railway.app
 ### Railway — Backend service Variables
 | Variable | Value |
 |---|---|
-| `SPRING_DATASOURCE_URL` | `jdbc:h2:file:/app/data/studentplanner;AUTO_SERVER=TRUE` |
-| `CORS_ALLOWED_ORIGINS` | `https://student-planner-frontend-production.up.railway.app` |
+| `SPRING_DATASOURCE_URL` | `jdbc:h2:file:/app/data/studyflow;AUTO_SERVER=TRUE` |
+| `CORS_ALLOWED_ORIGINS` | `https://studyflow-frontend-production.up.railway.app` |
 
 ### Railway — Backend service Volumes
 | Mount Path |
@@ -170,10 +170,10 @@ VITE_API_URL = https://student-planner-backend-production.up.railway.app
 ### Railway — Frontend service Build Arguments
 | Variable | Value |
 |---|---|
-| `VITE_API_URL` | `https://student-planner-backend-production.up.railway.app` |
+| `VITE_API_URL` | `https://studyflow-backend-production.up.railway.app` |
 
 ### Live URLs
 | Service | URL |
 |---|---|
-| Frontend | `https://student-planner-frontend-production.up.railway.app` |
-| Backend | `https://student-planner-backend-production.up.railway.app` |
+| Frontend | `https://studyflow-frontend-production.up.railway.app` |
+| Backend | `https://studyflow-backend-production.up.railway.app` |

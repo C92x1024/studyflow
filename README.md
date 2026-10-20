@@ -1,13 +1,13 @@
-# Student Planner — Project Overview
+# StudyFlow — Project Overview
 
 ## Live App
 
-🌐 **[https://student-planner-frontend-production.up.railway.app](https://student-planner-frontend-production.up.railway.app)**
+🌐 **[https://studyflow-frontend-production.up.railway.app](https://studyflow-frontend-production.up.railway.app)**
 
 | Service | URL |
 |---|---|
-| Frontend | https://student-planner-frontend-production.up.railway.app |
-| Backend API | https://student-planner-backend-production.up.railway.app |
+| Frontend | https://studyflow-frontend-production.up.railway.app |
+| Backend API | https://studyflow-backend-production.up.railway.app |
 
 ---
 
@@ -66,11 +66,11 @@ A full-stack web application that allows students to:
 ## Project Structure
 
 ```
-student-planner/
+studyflow/
 ├── backend/
 │   ├── Dockerfile
 │   ├── pom.xml
-│   └── src/main/java/com/studentplanner/
+│   └── src/main/java/com/studyflow/
 │       ├── config/          SecurityConfig.java
 │       ├── controller/      AuthController, CourseController,
 │       │                    HomeworkController, GlobalExceptionHandler
@@ -259,7 +259,7 @@ Browser → https://frontend.up.railway.app
 | `VITE_API_URL` | `https://<backend>.up.railway.app` | Railway frontend Build Argument |
 | `PORT` | Injected by Railway at runtime | Railway runtime (auto) |
 | `CORS_ALLOWED_ORIGINS` | `https://<frontend>.up.railway.app` | Railway backend Variable |
-| `SPRING_DATASOURCE_URL` | `jdbc:h2:file:/app/data/studentplanner;AUTO_SERVER=TRUE` | Railway backend Variable |
+| `SPRING_DATASOURCE_URL` | `jdbc:h2:file:/app/data/studyflow;AUTO_SERVER=TRUE` | Railway backend Variable |
 
 ### Vite dev server — `npm run dev` (no Docker)
 
