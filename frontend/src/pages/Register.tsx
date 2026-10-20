@@ -35,7 +35,7 @@ export default function Register() {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <h1 className="auth-title">📚 Student Planner</h1>
+        <h1 className="auth-title">📚 StudyFlow</h1>
         <p className="auth-sub">Create an account</p>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
