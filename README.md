@@ -2,7 +2,7 @@
 
 ## Live App
 
-🌐 **[https://studyflow-frontend-production.up.railway.app](https://studyflow-frontend-production.up.railway.app)**
+🌐 **[https://studyflow-frontend-production-c1ce.up.railway.app](https://studyflow-frontend-production-c1ce.up.railway.app/login)**
 
 | Service | URL |
 |---|---|
@@ -245,9 +245,9 @@ Browser → http://localhost:5173
 ### Railway — production
 
 ```
-Browser → https://frontend.up.railway.app
+Browser → https://studyflow-frontend-production.up.railway.app
   → React app calls VITE_API_URL/api/... directly
-    → https://backend.up.railway.app/api/...
+    → https://studyflow-backend-production.up.railway.app/api/...
       → Spring Boot
             ↕
       H2 file database
@@ -256,9 +256,9 @@ Browser → https://frontend.up.railway.app
 
 | Config | Value | Where set |
 |---|---|---|
-| `VITE_API_URL` | `https://<backend>.up.railway.app` | Railway frontend Build Argument |
+| `VITE_API_URL` | `https://studyflow-backend-production.up.railway.app` | Railway frontend Build Argument |
 | `PORT` | Injected by Railway at runtime | Railway runtime (auto) |
-| `CORS_ALLOWED_ORIGINS` | `https://<frontend>.up.railway.app` | Railway backend Variable |
+| `CORS_ALLOWED_ORIGINS` | `https://studyflow-frontend-production.up.railway.app` | Railway backend Variable |
 | `SPRING_DATASOURCE_URL` | `jdbc:h2:file:/app/data/studyflow;AUTO_SERVER=TRUE` | Railway backend Variable |
 
 ### Vite dev server — `npm run dev` (no Docker)
