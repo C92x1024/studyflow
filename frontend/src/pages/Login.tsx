@@ -32,7 +32,7 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <h1 className="auth-title">📚 Student Planner</h1>
+        <h1 className="auth-title">📚 StudyFlow</h1>
         <p className="auth-sub">Sign in to your account</p>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
