@@ -18,4 +18,4 @@ COPY nginx.conf /etc/nginx/templates/default.conf.template
 EXPOSE 8080
 # Substitute PORT and BACKEND_HOST at container startup.
 # Defaults applied in shell before envsubst (envsubst does not support ${VAR:-default} syntax).
-CMD ["/bin/sh", "-c", "export PORT=${PORT:-8080}; export BACKEND_HOST=${BACKEND_HOST:-backend}; export DNS_RESOLVER=$(awk '/^nameserver/{ip=$2; if (ip ~ /:/) ip=\"[\" ip \"]\"; print ip; exit}' /etc/resolv.conf); envsubst '${PORT} ${BACKEND_HOST} ${DNS_RESOLVER}' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+CMD ["/bin/sh", "-c", "export PORT=${PORT:-8080}; export BACKEND_HOST=${BACKEND_HOST:-backend}; export DNS_RESOLVER=$(awk '/^nameserver/{ip=$2; if (ip ~ /:/) ip=\"[\" ip \"]\"; print ip; exit}' /etc/resolv.conf); export DNS_RESOLVER=${DNS_RESOLVER:-127.0.0.11}; envsubst '${PORT} ${BACKEND_HOST} ${DNS_RESOLVER}' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
