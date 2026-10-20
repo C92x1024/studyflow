@@ -11,10 +11,10 @@
     <relativePath/>
   </parent>
 
-  <groupId>com.studentplanner</groupId>
-  <artifactId>student-planner-backend</artifactId>
+  <groupId>com.studyflow</groupId>
+  <artifactId>studyflow-backend</artifactId>
   <version>1.0.0</version>
-  <name>Student Planner Backend</name>
+  <name>StudyFlow Backend</name>
   <description>Simple homework and course tracker with due-date notifications</description>
 
   <properties>
