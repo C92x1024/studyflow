@@ -6,8 +6,8 @@
 
 | Service | URL |
 |---|---|
-| Frontend | https://studyflow-frontend-production.up.railway.app |
-| Backend API | https://studyflow-backend-production.up.railway.app |
+| Frontend | https://studyflow-frontend-production-c1ce.up.railway.app |
+| Backend API | https://studyflow-backend-production-505c.up.railway.app |
 
 ---
 
