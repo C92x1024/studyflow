@@ -7,6 +7,6 @@ RUN mvn package -DskipTests -q
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/target/student-planner-backend-1.0.0.jar app.jar
+COPY --from=build /app/target/studyflow-backend-1.0.0.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-Dserver.port=${PORT:-8080}", "-jar", "app.jar"]
